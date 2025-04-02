@@ -1,50 +1,34 @@
-    /*
-        Clase: Cliente
-        Curso: Fundamentos de Programación Orientada a Objetos (FPOO)
-        Universidad del Valle
+// Cliente.h
+// Clase que representa a un cliente de la droguería.
+// Responsabilidades:
+// - Almacenar información del cliente (nombre).
+// - Mantener un registro de los productos comprados o de interés por parte del cliente.
+// Colaboraciones:
+// - Colabora con la clase Producto para registrar los productos comprados por el cliente.
+// - Colabora con la clase Drogueria para gestionar los clientes y realizar búsquedas de productos.
+// Autor:Victor Buchlei
+// mail:victor.bucheli@correounivalle.edu.co
 
-        Información CRC:
-        
-        Clase: Cliente
+#ifndef CLIENTE_H
+#define CLIENTE_H
 
-        Responsabilidades:
-            - Abstraer el comportamiento de un cliente dentro de un banco su información y sus operaciones
-            - El cliente puede modificar su información
-        
-        Colaboradores:
-            - Cuenta
-            - Banco
+#include <string>
+#include <vector>
+#include <memory>
+#include "Producto.h"
 
+class Cliente {
+private:
+    std::string nombre;  // Nombre del cliente
+    std::vector<Producto*> productosComprados;  // Productos comprados por el cliente
 
-        Autor: Juan Fernando Marmolejo 
-        Correo: juan.fernando.marmolejo@correounivalle.edu.co
-        Fecha: Marzo 2025
-        Contribuidor: Victor Bucheli
+public:
+    Cliente(std::string nombre);
 
-    */
+    std::string getNombre() const;
+    
+    void agregarProductoComprado(Producto* auxProducto);
+    void verCanastadeCompras();
+};
 
-    #ifndef Cliente_h
-    #define Cliente_h
-    #include <iostream>
-    #include <string>
-    using namespace std;
-    class Cliente{
-    private:
-        string nombre;
-        string identificacion;
-        string telefono;
-
-    public:
-        Cliente(const string parametro_identificacion);
-        //Get
-        std::string getNombre();
-        std::string getIdentificacion();
-        std::string getTelefono();
-
-        //Set
-        void setNombre(string parametro_nombre);
-        void setTelefono(string parametro_telefono);
-        void imprimir();
-
-    };
-    #endif //Cliente_h
+#endif  // CLIENTE_H
